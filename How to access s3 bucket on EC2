@@ -1,0 +1,1 @@
+“In production we never use access keys. We attach an IAM Role to the EC2 instance with S3 permissions. AWS provides temporary credentials automatically, and the application accesses S3 via AWS CLI or SDK securely.”
