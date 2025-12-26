@@ -1,0 +1,99 @@
+Here are the **MOST IMPORTANT interview Q&A** on
+
+## **EC2 ↔ S3 access (Banking / Production level)**
+
+— exactly what Infosys, TCS, Accenture, Cognizant, and Banking clients expect.
+
+---
+
+## 🔥 1️⃣ How does EC2 securely access S3?
+
+**Answer:**
+
+> “EC2 accesses S3 using an IAM Role attached to the instance. The role provides temporary credentials via AWS STS, which the AWS CLI or SDK uses to authenticate securely without storing access keys.”
+
+---
+
+## 🔥 2️⃣ Why not use Access Key & Secret Key?
+
+**Answer:**
+
+> “Access keys are static and risky. IAM roles provide short-lived, auto-rotated credentials which are more secure and compliant with banking standards.”
+
+---
+
+## 🔥 3️⃣ What happens when IAM role is attached to EC2?
+
+**Answer:**
+
+> “AWS injects temporary credentials into the instance via the Instance Metadata Service. Any AWS CLI or SDK automatically picks them up.”
+
+---
+
+## 🔥 4️⃣ How do you verify EC2 has correct IAM role?
+
+**Answer:**
+
+```bash
+aws sts get-caller-identity
+```
+
+> “If it shows the role name, authentication is working.”
+
+---
+
+## 🔥 5️⃣ How do you copy files from EC2 to S3?
+
+**Answer:**
+
+```bash
+aws s3 cp file.txt s3://bucket-name/
+```
+
+---
+
+## 🔥 6️⃣ How do applications access S3 from EC2?
+
+**Answer:**
+
+> “Applications use AWS SDKs like Boto3. The SDK automatically uses the IAM role credentials to access S3 securely.”
+
+---
+
+## 🔥 7️⃣ How do you restrict access to only one bucket?
+
+**Answer:**
+
+> “By using least-privilege IAM policy that allows access only to a specific S3 bucket ARN.”
+
+---
+
+## 🔥 8️⃣ What security is used for data?
+
+**Answer:**
+
+> “S3 uses encryption at rest (KMS or AES-256) and HTTPS encryption in transit.”
+
+---
+
+## 🔥 9️⃣ What happens if the role is removed?
+
+**Answer:**
+
+> “The EC2 instance immediately loses access to S3 because credentials are no longer issued.”
+
+---
+
+## 🔥 10️⃣ One-line banking-grade answer
+
+> “We use IAM roles attached to EC2 to securely access S3 using temporary credentials without storing secrets.”
+
+---
+
+These answers are **production-level** and **client-round ready**.
+
+If you want, I can give:
+
+* Terraform interview questions
+* Jenkins + EC2 + S3 questions
+* Kubernetes Pod → S3 interview flow
